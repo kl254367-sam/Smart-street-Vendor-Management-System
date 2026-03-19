@@ -6,7 +6,7 @@
 // FILE 1: CustomUser.java
 // Abstract base class — defines contract for ALL system users
 // OOP: ABSTRACTION, ENCAPSULATION
-// 
+
 
 public abstract class CustomUser {
 
@@ -314,66 +314,66 @@ public class MarketSpace {
 // OOP: ENCAPSULATION
 // 
 
-public class GrievanceReport {
+// public class GrievanceReport {
 
-    // Grievance type constants
-    public static final String TYPE_UNFAIR_EVICTION    = "UNFAIR_EVICTION";
-    public static final String TYPE_SPACE_UNAVAILABLE  = "SPACE_UNAVAILABLE";
-    public static final String TYPE_OFFICER_MISCONDUCT = "OFFICER_MISCONDUCT";
-    public static final String TYPE_OTHER              = "OTHER";
+//     // Grievance type constants
+//     public static final String TYPE_UNFAIR_EVICTION    = "UNFAIR_EVICTION";
+//     public static final String TYPE_SPACE_UNAVAILABLE  = "SPACE_UNAVAILABLE";
+//     public static final String TYPE_OFFICER_MISCONDUCT = "OFFICER_MISCONDUCT";
+//     public static final String TYPE_OTHER              = "OTHER";
 
-    // Status constants
-    public static final String STATUS_OPEN         = "OPEN";
-    public static final String STATUS_UNDER_REVIEW = "UNDER_REVIEW";
-    public static final String STATUS_RESOLVED     = "RESOLVED";
+//     // Status constants
+//     public static final String STATUS_OPEN         = "OPEN";
+//     public static final String STATUS_UNDER_REVIEW = "UNDER_REVIEW";
+//     public static final String STATUS_RESOLVED     = "RESOLVED";
 
-    // Private fields (Encapsulation)
-    private String grievanceID;
-    private String vendorID;
-    private String vendorName;
-    private String type;
-    private String details;
-    private String dateSubmitted;
-    private String status;
-    private String resolutionNotes;   // filled by Administrator on resolve
+//     // Private fields (Encapsulation)
+//     private String grievanceID;
+//     private String vendorID;
+//     private String vendorName;
+//     private String type;
+//     private String details;
+//     private String dateSubmitted;
+//     private String status;
+//     private String resolutionNotes;   // filled by Administrator on resolve
 
-    // Constructor
-    public GrievanceReport(String grievanceID, Vendor vendor, String type, String details) {
-        this.grievanceID     = grievanceID;
-        this.vendorID        = vendor.getEntityID();
-        this.vendorName      = vendor.getName();
-        this.type            = type;
-        this.details         = details;
-        this.dateSubmitted   = java.time.LocalDate.now().toString();
-        this.status          = STATUS_OPEN;
-        this.resolutionNotes = null;
-        System.out.println("Grievance " + grievanceID + " submitted by " + vendorName);
-    }
+//     // Constructor
+//     public GrievanceReport(String grievanceID, Vendor vendor, String type, String details) {
+//         this.grievanceID     = grievanceID;
+//         this.vendorID        = vendor.getEntityID();
+//         this.vendorName      = vendor.getName();
+//         this.type            = type;
+//         this.details         = details;
+//         this.dateSubmitted   = java.time.LocalDate.now().toString();
+//         this.status          = STATUS_OPEN;
+//         this.resolutionNotes = null;
+//         System.out.println("Grievance " + grievanceID + " submitted by " + vendorName);
+//     }
 
-    // Update grievance status  Administrators only (enforced by VendorManagementSystem)
-    public void updateStatus(String newStatus, String notes) {
-        this.status          = newStatus;
-        this.resolutionNotes = notes;
-        System.out.println("Grievance " + grievanceID + " updated to: " + newStatus);
-    }
+//     // Update grievance status  Administrators only (enforced by VendorManagementSystem)
+//     public void updateStatus(String newStatus, String notes) {
+//         this.status          = newStatus;
+//         this.resolutionNotes = notes;
+//         System.out.println("Grievance " + grievanceID + " updated to: " + newStatus);
+//     }
 
-    // Display grievance summary
-    public void displaySummary() {
-        System.out.println("[" + grievanceID + "] " + type + " | " + status);
-        System.out.println("  Vendor  : " + vendorName + " (" + vendorID + ")");
-        System.out.println("  Date    : " + dateSubmitted);
-        System.out.println("  Details : " + details);
-        if (resolutionNotes != null)
-            System.out.println("  Notes   : " + resolutionNotes);
-    }
+//     // Display grievance summary
+//     public void displaySummary() {
+//         System.out.println("[" + grievanceID + "] " + type + " | " + status);
+//         System.out.println("  Vendor  : " + vendorName + " (" + vendorID + ")");
+//         System.out.println("  Date    : " + dateSubmitted);
+//         System.out.println("  Details : " + details);
+//         if (resolutionNotes != null)
+//             System.out.println("  Notes   : " + resolutionNotes);
+//     }
 
-    // Getters
-    public String getGrievanceID()   { return grievanceID; }
-    public String getVendorID()      { return vendorID; }
-    public String getType()          { return type; }
-    public String getStatus()        { return status; }
-    public String getDateSubmitted() { return dateSubmitted; }
-}
+//     // Getters
+//     public String getGrievanceID()   { return grievanceID; }
+//     public String getVendorID()      { return vendorID; }
+//     public String getType()          { return type; }
+//     public String getStatus()        { return status; }
+//     public String getDateSubmitted() { return dateSubmitted; }
+// }
 
 
 // 
@@ -385,43 +385,43 @@ public class GrievanceReport {
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuditLog {
+// public class AuditLog {
 
-    // Static singleton log — cannot be deleted by normal users
-    private static final List<String> log = new ArrayList<>();
+//     // Static singleton log — cannot be deleted by normal users
+//     private static final List<String> log = new ArrayList<>();
 
-    // Record an action
-    public static void record(String officerID, String action,
-                               String targetID, String notes) {
-        String timestamp = java.time.LocalDateTime.now().toString();
-        String entry = "[" + timestamp + "]"
-                     + " Officer:" + officerID
-                     + " | Action:" + action
-                     + " | Target:" + targetID
-                     + " | Notes:"  + notes;
-        log.add(entry);
-        System.out.println("AUDIT: " + entry);
-    }
+//     // Record an action
+//     public static void record(String officerID, String action,
+//                                String targetID, String notes) {
+//         String timestamp = java.time.LocalDateTime.now().toString();
+//         String entry = "[" + timestamp + "]"
+//                      + " Officer:" + officerID
+//                      + " | Action:" + action
+//                      + " | Target:" + targetID
+//                      + " | Notes:"  + notes;
+//         log.add(entry);
+//         System.out.println("AUDIT: " + entry);
+//     }
 
-    // Print full audit trail
-    public static void printFullLog() {
-        System.out.println("= FULL AUDIT LOG =");
-        if (log.isEmpty()) {
-            System.out.println("  No entries recorded.");
-        } else {
-            for (String entry : log) {
-                System.out.println(entry);
-            }
-        }
-        System.out.println("");
-    }
+//     // Print full audit trail
+//     public static void printFullLog() {
+//         System.out.println("= FULL AUDIT LOG =");
+//         if (log.isEmpty()) {
+//             System.out.println("  No entries recorded.");
+//         } else {
+//             for (String entry : log) {
+//                 System.out.println(entry);
+//             }
+//         }
+//         System.out.println("");
+//     }
 
-    // Get total log entry count
-    public static int getLogCount() { return log.size(); }
+//     // Get total log entry count
+//     public static int getLogCount() { return log.size(); }
 
-    // Private constructor — prevents instantiation
-    private AuditLog() {}
-}
+//     // Private constructor — prevents instantiation
+//     private AuditLog() {}
+// }
 
 
 // 
